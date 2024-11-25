@@ -115,9 +115,7 @@ class _BookListPageState extends State<BookListPage> {
             ),
       floatingActionButton: FloatingActionButton(onPressed: () {
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const Addbook())).then((_) {
-          fetchBooks();
-        });
+            MaterialPageRoute(builder: (context) => const Addbook()),);
       },child: const Icon(Icons.add),),
     );
   }

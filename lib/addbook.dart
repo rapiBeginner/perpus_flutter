@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:perpustakaan/home_page.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -22,15 +23,14 @@ class _AddbookState extends State<Addbook> {
         'deskripsi': deskripsiController.text,
       });
 
-      if (response.error == null) {
+      if (response == null) {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text('Buku telah ditambahkan'),
         ));
-        await Future.delayed(const Duration(seconds: 1));
+        Navigator.pop(context,true);
         Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const BookListPage()),
-        );
+            context, MaterialPageRoute(builder: (context) => BookListPage()));
+        print(response);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text('Gagal menambahkan buku: ${response.error!.message}'),
